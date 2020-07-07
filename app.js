@@ -1,5 +1,5 @@
 //app.js
-App({
+App({  
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -12,6 +12,20 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+
+    wx.request({  
+      url: 'http://localhost:8080/',  
+      data:{},  
+      method:'POST',  
+      header: {  
+        'content-type': 'application/json'  
+      },  
+      success: function (res) {  
+        console.log(res.data)  
+      }  
+    })  
+    
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
